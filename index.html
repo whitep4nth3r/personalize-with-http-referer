@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalize your static site based on a previous site referral</title>
+
+    <style>
+      body {
+        padding: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .wrapper {
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .referer {
+        background: black;
+        color: white;
+        font-size: 2rem;
+        margin: -3rem -3rem 3rem -3rem;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      h1 {
+        max-width: 40ch;
+        font-size: 4rem;
+      }
+
+      li {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="referer"></p>
+    <div class="wrapper">
+      <h1>Personalize your static site using the HTTP referer header</h1>
+      <p>This is a static page served from Netlify's CDN.</p>
+      <p>
+        Using Netlify Edge Functions, we can intercept a request to this page, check the value of the HTTP referer
+        header, and rewrite the response of the HTML before it's returned to the browser. No client-side JavaScript
+        required.
+      </p>
+      <hr />
+      <h2>Testing in development</h2>
+      <ol>
+        <li>
+          Use the
+          <a href="https://ntl.fyi/3Til6sY">Netlify CLI</a>
+          to run this site locally
+        </li>
+        <li>
+          Make sure the referer detection is set to http://localhost:8888/ and
+          <a href="/">click here.</a>
+        </li>
+        <li>
+          To remove the HTTP referer header and banner in development, navigate to http://localhost:8888/ without
+          clicking on the link above.
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>
