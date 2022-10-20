@@ -16,7 +16,7 @@ export default async (request, context) => {
   // check for the referer we care about
   // this is a basic example and you may want to get a little
   // more fancy with fuzzy checks and multiple referers
-  if (referer !== "http://localhost:8888/") {
+  if (referer !== "https://personalize-with-http-referer.netlify.app/") {
     return response;
   }
 
