@@ -1,3 +1,7 @@
 [[edge_functions]]
   path = "/"
   function = "referer"
+
+[context.dev.environment]
+  HTTP_REFERER_CHECK = "http://localhost:8888/"
+

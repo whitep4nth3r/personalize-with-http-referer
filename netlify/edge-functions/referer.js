@@ -16,7 +16,11 @@ export default async (request, context) => {
   // check for the referer we care about
   // this is a basic example and you may want to get a little
   // more fancy with fuzzy checks and multiple referers
-  if (referer !== "https://personalize-with-http-referer.netlify.app/") {
+
+  // HTTP_REFERER_CHECK is an environment variable
+  // in production it is set to the production URL
+  // in dev, it is set in the netlify.toml
+  if (referer !== Deno.env.get("HTTP_REFERER_CHECK")) {
     return response;
   }
 
