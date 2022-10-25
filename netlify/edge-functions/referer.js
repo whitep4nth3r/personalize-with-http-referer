@@ -20,16 +20,20 @@ export default async (request, context) => {
   // HTTP_REFERER_CHECK is an environment variable
   // in production it is set to the production URL
   // in dev, it is set in the netlify.toml
-  if (referer !== Deno.env.get("HTTP_REFERER_CHECK")) {
+  if (referer !== Deno.env.get("HTTP_REFERER_CHECK") || referer !== "https://www.netlify.com/") {
     return response;
   }
 
   // if we do have a referer match, rewrite the element
   // in the response HTML with a friendly message
+  const netlifyMsg = referer === "https://www.netlify.com/" ? " You came from the Netlify blog post!" : "";
+
   return new HTMLRewriter()
     .on("p#referer", {
       element(element) {
-        element.setInnerContent("Hello, from an Edge Function that detected a specific HTTP referer header!");
+        element.setInnerContent(
+          `Hello, from an Edge Function that detected a specific HTTP referer header! ${netlifyMsg}`,
+        );
         element.setAttribute("class", "referer");
       },
     })
