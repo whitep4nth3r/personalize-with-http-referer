@@ -20,7 +20,7 @@ export default async (request, context) => {
   // HTTP_REFERER_CHECK is an environment variable
   // in production it is set to the production URL
   // in dev, it is set in the netlify.toml
-  if (referer !== Deno.env.get("HTTP_REFERER_CHECK") || referer !== "https://www.netlify.com/") {
+  if (referer !== Deno.env.get("HTTP_REFERER_CHECK") && referer !== "https://www.netlify.com/") {
     return response;
   }
 
