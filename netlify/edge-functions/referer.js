@@ -26,13 +26,14 @@ export default async (request, context) => {
 
   // if we do have a referer match, rewrite the element
   // in the response HTML with a friendly message
-  const netlifyMsg = referer === "https://www.netlify.com/" ? " You came from the Netlify blog post!" : "";
+  const netlifyMsg = referer === "https://www.netlify.com/" ? "<br /> ✨ You came from the Netlify blog post! ✨ " : "";
 
   return new HTMLRewriter()
     .on("p#referer", {
       element(element) {
         element.setInnerContent(
           `Hello, from an Edge Function that detected a specific HTTP referer header! ${netlifyMsg}`,
+          { html: true },
         );
         element.setAttribute("class", "referer");
       },
