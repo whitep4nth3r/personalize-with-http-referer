@@ -5,3 +5,5 @@
 [context.dev.environment]
   HTTP_REFERER_CHECK = "http://localhost:8888/"
 
+[template.environment]
+  HTTP_REFERER_CHECK = "change me to the referer header you want to check for in production"
